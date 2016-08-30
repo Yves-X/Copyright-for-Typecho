@@ -5,7 +5,9 @@
 Just like this:
 
 > 版权属于：Yves X
+
 > 原文链接： https://github.com/Yves-X/Copyright-for-Typecho
+
 > 转载时须注明出处及本声明
 
 ## 安装
@@ -38,7 +40,7 @@ git clone https://github.com/Yves-X/Copyright-for-Typecho.git
 |:---:|:---:|:----|
 |switch|整数|版权信息的开关（为0时关闭）|
 |author|字符|版权作者姓名（如：Yves X。为0时关闭）|
-|url|字符|原文链接（如：https://github.com/Yves-X/Copyright-for-Typecho。为0时关闭）|
+|url|字符|原文链接（如：https://github.com/Yves-X/Copyright-for-Typecho 。为0时关闭）|
 |notice|字符|版权声明（如：转载时须注明出处及本声明。为0时关闭）|
 
 注：上述所有数字值，都只在类型为“整数”时生效。
