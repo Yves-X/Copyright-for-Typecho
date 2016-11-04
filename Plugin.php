@@ -6,7 +6,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @package Copyright
  * @author  Yves X
- * @version 0.9.1
+ * @version 0.9.2
  * @link https://github.com/Yves-X/Copyright-for-Typecho
  */
 
@@ -69,86 +69,81 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
      * @access public
      * @return void
      */
-    public static function copyright($content, $widget) {
+    public static function copyright($content, $widget, $lastResult) {
+        $content = empty($lastResult)?$content:$lastResult;
         $showOnPost = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->showOnPost;
+        $showOnPage = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->showOnPage;
 
         if (! $widget->is('single')) {
-            echo $content;
-            return;
+            return $content;
         }
 
-        else if ($widget->parameter->type == 'post') {
+        if ($widget->parameter->type == 'post') {
         	if (isset($widget->fields->switch)) {
         		if (!$widget->fields->switch) {
-        			echo $content;
+        			return $content;
         		}
         		else
-        			echo self::superAdd($content, $widget);
+        			return self::superAdd($content, $widget);
         	}
             else if ($showOnPost) {
-                echo self::superAdd($content, $widget);
+                return self::superAdd($content, $widget);
             }
             else {
-                echo $content;
+                return $content;
             }
-
         }
 
-        else if ($widget->parameter->type == 'page') {
+        if ($widget->parameter->type == 'page') {
         	if (isset($widget->fields->switch)) {
         		if (!$widget->fields->switch) {
-        			echo $content;
+        			return $content;
         		}
         		else
-        			echo self::superAdd($content, $widget);
+        			return self::superAdd($content, $widget);
         	}
             else if ($showOnPage) {
-                echo self::superAdd($content, $widget);
+                return self::superAdd($content, $widget);
             }
             else {
-                echo $content;
+                return $content;
             }
         }
 
-        else {
-            echo $content;
-        }
+        return $content;
     }
 
     private static function superAdd($content, $widget) {
-    	$res = '<hr class="content-copyright" /><blockquote>';
     	if (isset($widget->fields->author)) {
     		$author = $widget->fields->author;
             if($author) {
-    		  $res = $res . '<p class="content-copyright">版权属于：' . $author . "</p>";
+    		  $t_author = '<p class="content-copyright">版权属于：' . $author . '</p>';
             }
     	}
     	else if ($author = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->author) {
-    		$res = $res . '<p class="content-copyright">版权属于：' . $author . '</p>';
+    		$t_author = '<p class="content-copyright">版权属于：' . $author . '</p>';
     	}
 
      	if (isset($widget->fields->url)) {
     		$url = $widget->fields->url;
             if($url) {
-    			$res = $res . '<p class="content-copyright">原文链接：<a class="content-copyright" href="' . $url . '">' . $url . '</a></p>';
+    			$t_url = '<p class="content-copyright">原文链接：<a class="content-copyright" href="' . $url . '">' . $url . '</a></p>';
             }
     	}
     	else if ($showURL = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->showURL) {
     		$url = $widget->permalink;
-    		$res = $res . '<p class="content-copyright">本文链接：<a class="content-copyright" href="' . $url . '">' . $url . '</a></p>';
+    		$t_url = '<p class="content-copyright">本文链接：<a class="content-copyright" href="' . $url . '">' . $url . '</a></p>';
     	}
 
     	if (isset($widget->fields->notice)) {
     		$notice = $widget->fields->notice;
             if($notice) {
-    		  $res = $res . '<p class="content-copyright">' . $notice .'</p>';
+    		  $t_notice = '<p class="content-copyright">' . $notice .'</p>';
             }
     	}
     	else if ($notice = Typecho_Widget::widget('Widget_Options')->plugin('Copyright')->notice) {
-    		$res = $res . '<p class="content-copyright">' . $notice . '</p>';
+    		$t_notice = '<p class="content-copyright">' . $notice . '</p>';
     	}
-
-    	$res = $res . '</blockquote>';
-        return $content . $res;
+        return $content . '<hr class="content-copyright" /><blockquote class="content-copyright">' . $t_author . $t_url . $t_notice . '</blockquote>';
     }
 }
