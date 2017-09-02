@@ -114,6 +114,10 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
     }
 
     private static function superAdd($content, $widget) {
+        $t_author = "";
+        $t_url = "";
+        $t_notice  = "";
+	    
     	if (isset($widget->fields->author)) {
     		$author = $widget->fields->author;
             if($author) {
