@@ -2,26 +2,30 @@
 
 这是一个 [Typecho](https://github.com/typecho/typecho) 插件，利用自定义字段功能灵活地在文章或独立页面尾部显示版权小尾巴。
 
-Just like this:
+就像这样：
 
 > 版权属于：Yves X
-
+>
 > 原文链接： https://github.com/Yves-X/Copyright-for-Typecho
-
+>
 > 转载时须注明出处及本声明
+
+由于作者已有很长时间未能及时维护，它曾随着 Typecho 更新而失效。感谢[神代綺凜](https://github.com/YKilin)修复并更新了此插件，使得它可以在 Typecho 1.1 版本继续工作。
 
 ## 安装
 
-0. 下载插件
-0. 打开 Typecho 根目录
-0. 解压至 ./usr/plugins/
+1. 下载插件
+1. 打开 Typecho 根目录
+1. 解压至 ./usr/plugins/
+1. 将目录重命名为`Copyright`
 
 You can also:
 
 ```bash
 # Initailly open the root document of your Typecho, then
-cd ./usr/plugins/
+cd usr/plugins/
 git clone https://github.com/Yves-X/Copyright-for-Typecho.git
+mv Copyright-for-Typecho Copyright
 ```
 
 ## 启用
@@ -40,10 +44,12 @@ git clone https://github.com/Yves-X/Copyright-for-Typecho.git
 |:---:|:---:|:----|:----|
 |switch|整数|版权信息的开关|1|
 |author|字符|版权作者姓名|Yves X|
-|url|字符|原（本）文链接|https://github.com/Yves-X/Copyright-for-Typecho|
+|url|字符|原（本）文链接*|https://github.com/Yves-X/Copyright-for-Typecho|
 |notice|字符|版权声明|转载时须注明出处及本声明|
 
 你可以把任意字段的值设定为**整数0**来关闭它。
+
+\* 当你的文章为转载时，可以用这个字段来设置原文链接。当你的文章为原创时，也可将该字段开启，插件将直接显示当前文章页链接。
 
 ## 定制
 
@@ -67,9 +73,9 @@ git clone https://github.com/Yves-X/Copyright-for-Typecho.git
 
 现在你要对某篇特定的文章显示版权信息，有以下要求：
 
-0. 不显示作者
-0. 显示原文链接
-0. 声明为“禁止转载”
+1. 不显示作者
+1. 显示原文链接
+1. 声明为“禁止转载”
 
 你只需用自定义字段功能，将于全局设置不符的选项覆盖。在此处，你只需填写三条字段：
 
@@ -82,5 +88,5 @@ git clone https://github.com/Yves-X/Copyright-for-Typecho.git
 显示效果为：
 
 > 原文链接：https://github.com/Yves-X/Copyright-for-Typecho
-
+>
 > 禁止转载
