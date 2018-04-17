@@ -157,8 +157,8 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
             if ($cr['notice']) {
                 $t_notice = '<p class="content-copyright">' . $cr['notice'] . '</p>';
             }
+            $copyright_html = '<hr class="content-copyright" style="margin-top:50px" /><blockquote class="content-copyright" style="font-style:normal">' . $t_author . $t_url . $t_notice . '</blockquote>';
         }
-        $copyright_html = '<hr class="content-copyright" style="margin-top:50px" /><blockquote class="content-copyright" style="font-style:normal">' . $t_author . $t_url . $t_notice . '</blockquote>';
         return $copyright_html;
     }
 
