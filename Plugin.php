@@ -6,7 +6,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @package Copyright
  * @author  Yves X
- * @version 1.0.2
+ * @version 1.0.3
  * @link https://github.com/Yves-X/Copyright-for-Typecho
  */
 
@@ -19,9 +19,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
      * @throws Typecho_Plugin_Exception
      */
     public static function activate() {
-        Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx_999 = array('Copyright_Plugin', 'Copyright');
-        /*如遇其他插件也在 contentEx 处加载导致的问题，请将 999 改到更大值，确保它大于导致冲突的其他插件*/
-        /*该操作在重新启用插件后生效*/
+        Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array('Copyright_Plugin', 'Copyright');
     }
 
     /**
@@ -86,7 +84,8 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
         $content = empty($lastResult) ? $content : $lastResult;
         $cr = self::apply($widget);
         $cr_html = self::render($cr);
-        return $content . $cr_html;
+        $content = $content . $cr_html;
+        return $content;
     }
 
     private static function globalCopyright($widget) {
