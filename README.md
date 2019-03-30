@@ -90,3 +90,10 @@ mv Copyright-for-Typecho Copyright
 > 原文链接：https://github.com/Yves-X/Copyright-for-Typecho
 >
 > 禁止转载
+
+## 其他
+
+项目维护者支持其观点并愿其广为人知：
+
+[![Badge](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![Badge](https://img.shields.io/badge/link-NPL%20(The%20996%20Prohibited%20License)-red.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
