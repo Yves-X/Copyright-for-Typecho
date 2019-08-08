@@ -6,7 +6,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @package Copyright
  * @author  Yves X
- * @version 1.0.3
+ * @version 1.0.
  * @link https://github.com/Yves-X/Copyright-for-Typecho
  */
 
@@ -101,9 +101,7 @@ class Copyright_Plugin implements Typecho_Plugin_Interface {
 
     private static function localCopyright($widget) {
         $cr = array('switch_on' => '', 'author' => '', 'url' => '', 'notice' => '');
-        if ($widget->fields->switch) {
-            $cr['switch_on'] = 1;
-        }
+        $cr['switch_on'] = $widget->fields->switch;
         $cr['author'] = $widget->fields->author;
         $cr['url'] = $widget->fields->url;
         $cr['notice'] = $widget->fields->notice;
