@@ -6,7 +6,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  *
  * @package Copyright
  * @author  Yves X
- * @version 1.0.
+ * @version 1.0.4
  * @link https://github.com/Yves-X/Copyright-for-Typecho
  */
 
