@@ -2,6 +2,8 @@
 
 这是一个 [Typecho](https://github.com/typecho/typecho) 插件，利用自定义字段功能灵活地在文章或独立页面尾部显示版权小尾巴。
 
+> 这里是该插件的 1.x 版本存档，适用于 Typecho 1.0 和 1.1，不再维护。Typecho 1.2 及以上请使用 [2.0](https://github.com/Yves-X/Copyright-for-Typecho)。
+
 就像这样：
 
 > 版权属于：Yves X
@@ -10,22 +12,17 @@
 >
 > 转载时须注明出处及本声明
 
-作者曾有很长一段时间没有维护此插件，这期间它随 Typecho 1.1 更新而失效。感谢[神代綺凜](https://github.com/YKilin)修复了此插件，使得它可以在 Typecho 1.1 下继续工作。
-
 ## 安装
 
-1. 下载插件
-1. 打开 Typecho 根目录
-1. 解压至 ./usr/plugins/
-1. **将目录重命名为`Copyright`**（请确保插件目录名与插件名一致，感谢 [tanluxiami](https://github.com/tanluxiami) 的反馈。）
+1. 从 [Releases](https://github.com/Yves-X/Copyright-for-Typecho/releases) 下载 1.0.5
+1. 解压至 Typecho 的 `usr/plugins/` 下
+1. **将目录重命名为 `Copyright`**（插件目录名必须与插件名一致）
 
-You can also:
+也可以用 Git 安装：
 
 ```bash
-# Initailly open the root document of your Typecho, then
 cd usr/plugins/
-git clone https://github.com/Yves-X/Copyright-for-Typecho.git
-mv Copyright-for-Typecho Copyright
+git clone --branch 1.x https://github.com/Yves-X/Copyright-for-Typecho.git Copyright
 ```
 
 ## 启用
@@ -48,6 +45,8 @@ mv Copyright-for-Typecho Copyright
 |notice|字符|版权声明|转载时须注明出处及本声明|
 
 你可以把任意字段的值设定为**整数0**来关闭它。
+
+字段留空表示沿用全局设置。作者和声明可以使用 HTML，链接只接受以 `http://` 或 `https://` 开头的地址。
 
 \* 当你的文章为转载时，可以用这个字段来设置原文链接。当你的文章为原创时，如果该项显示开启，插件将直接输出当前页链接。
 
@@ -90,6 +89,10 @@ mv Copyright-for-Typecho Copyright
 > 原文链接：https://github.com/Yves-X/Copyright-for-Typecho
 >
 > 禁止转载
+
+## 致谢
+
+[神代綺凜](https://github.com/Tsuk1ko) · [tanluxiami](https://github.com/tanluxiami)
 
 ## 其他
 
