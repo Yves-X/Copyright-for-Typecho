@@ -1,0 +1,29 @@
+{
+    "name": "yves-x/copyright-for-typecho",
+    "description": "一个灵活的 Typecho 版权小尾巴插件",
+    "license": "GPL-3.0-only",
+    "authors": [
+        {
+            "name": "YvesX",
+            "homepage": "https://github.com/Yves-X"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.64",
+        "phpstan/phpstan": "^2.0"
+    },
+    "scripts": {
+        "lint": [
+            "php-cs-fixer check --diff",
+            "phpstan analyse --memory-limit=1G"
+        ],
+        "fix": "php-cs-fixer fix",
+        "e2e": "tests/e2e.sh"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

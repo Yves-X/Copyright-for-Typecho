@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check version
+        run: |
+          version="$(sed -n 's/^ \* @version //p' Plugin.php)"
+          [ "v$version" = "$GITHUB_REF_NAME" ] || { echo "Plugin.php 的 @version 是 $version，与标签 $GITHUB_REF_NAME 不一致"; exit 1; }
+      - name: Package
+        run: |
+          mkdir -p dist/Copyright
+          cp -R *.php assets LICENSE README.md dist/Copyright/
+          cd dist && zip -r "Copyright-$GITHUB_REF_NAME.zip" Copyright
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/Copyright-*.zip
+          generate_release_notes: true

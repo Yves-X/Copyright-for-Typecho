@@ -1,0 +1,8 @@
+# 只在开发中使用的文件，不随 git archive 打包
+/.github export-ignore
+/tests export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/composer.json export-ignore
+/phpstan.neon.dist export-ignore

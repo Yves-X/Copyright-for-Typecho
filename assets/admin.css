@@ -1,0 +1,125 @@
+/* 设置页和编辑页：协议的辅助选择、预览、旧字段迁移和写入已有内容，配色与 Typecho 后台一致 */
+
+.copyright-chooser > summary {
+    color: #467B96;
+    cursor: pointer;
+}
+
+/* 只给展开的内容加底色，标题留在原处，展开时不会移动 */
+.copyright-chooser-body {
+    margin-top: 0.5em;
+    padding: 0.75em 1em;
+    background: #F0F0EC;
+    border-radius: 2px;
+}
+
+.copyright-chooser ol {
+    margin: 0;
+    padding-left: 1.5em;
+}
+
+.copyright-chooser li {
+    margin: 0.75em 0;
+}
+
+.copyright-chooser li > p:first-child {
+    margin: 0 0 0.25em;
+    font-weight: bold;
+}
+
+.copyright-chooser label {
+    display: block;
+    margin: 0.25em 0;
+}
+
+.copyright-chooser-result {
+    margin-top: 1em;
+    padding-top: 0.75em;
+    border-top: 1px solid #D9D9D6;
+}
+
+.copyright-chooser-result p {
+    margin: 0.5em 0;
+}
+
+.copyright-panel {
+    margin: 1em 0;
+    padding: 0.75em 1em;
+    background: #FFF6BF;
+    color: #8A6D3B;
+    border-radius: 2px;
+}
+
+.copyright-panel h4,
+.copyright-panel p {
+    margin: 0 0 0.5em;
+}
+
+.copyright-panel ul {
+    margin: 0 0 0.5em;
+    padding: 0;
+    list-style: none;
+}
+
+#custom-field tr:has(input[name="fields[copyrightSealed]"]),
+#custom-field .fields .field:has(input[name="fields[copyrightSealed]"]) {
+    display: none;
+}
+
+.copyright-contents {
+    margin: 0.25em 0 0.5em 1.5em;
+}
+
+.copyright-contents summary {
+    cursor: pointer;
+}
+
+.copyright-contents ul {
+    margin: 0.25em 0;
+    padding-left: 1.5em;
+    max-height: 16em;
+    overflow-y: auto;
+    list-style: disc;
+}
+
+.copyright-contents ul.copyright-contents-checks {
+    padding-left: 0;
+    list-style: none;
+}
+
+.copyright-contents-all {
+    display: block;
+    margin: 0.25em 0;
+}
+
+.copyright-origin,
+.copyright-origin label,
+.copyright-mode label {
+    margin-right: 1em;
+}
+
+.copyright-preview {
+    margin-top: 1em;
+    padding: 0.75em 1em;
+    border: 1px dashed #D9D9D6;
+    border-radius: 2px;
+}
+
+.copyright-preview-title {
+    margin: 0 0 0.5em;
+    font-weight: bold;
+}
+
+.copyright-preview-title .description {
+    font-weight: normal;
+}
+
+#custom-field input[hidden],
+#custom-field label[hidden] {
+    display: none;
+}
+
+/* Typecho 1.3 的字段行按内容决定宽度，让版权字段的输入框占满一行 */
+#custom-field .fields .field:has([name^="fields[copyright"]) .field-value > div {
+    flex: 1;
+}

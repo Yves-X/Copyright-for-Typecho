@@ -1,0 +1,22 @@
+# 静态分析。Typecho 的源码不随插件分发，通过环境变量 TYPECHO_DIR 指定：
+#   TYPECHO_DIR=/path/to/typecho phpstan analyse
+parameters:
+    level: 8
+    phpVersion: 70400
+    paths:
+        - .
+    excludePaths:
+        analyseAndScan:
+            - tests/fixtures
+            - vendor (?)
+        # CI 把 Typecho 源码检出到这里，只供 scanDirectories 读取，不分析
+        analyse:
+            - typecho (?)
+    scanDirectories:
+        - %env.TYPECHO_DIR%/var
+    ignoreErrors:
+        # Typecho 用 __set 注册钩子：PluginManager::factory(...)->contentEx = ...
+        - identifier: property.notFound
+          path: Plugin.php
+    bootstrapFiles:
+        - tests/phpstan-bootstrap.php
